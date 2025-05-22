@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### PDFs ###
+*.pdf
+*.pdf~
+*.pdfx
