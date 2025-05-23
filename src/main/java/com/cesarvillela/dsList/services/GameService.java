@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.cesarvillela.dsList.dto.GameDTO;
 import com.cesarvillela.dsList.dto.GameMinDTO;
+import com.cesarvillela.dsList.projections.GameMinProjection;
 import com.cesarvillela.dsList.repositories.GameRepository;
 
 @Service
@@ -26,7 +27,11 @@ public class GameService {
         return new GameDTO(gameRepository.findById(id).get());
     }
 
+    public List<GameMinDTO> findByList(Long listId) {
+        List<GameMinProjection> result = gameRepository.searchByList(listId);
+        return result.stream().map(x -> new GameMinDTO(x)).toList();
+    }
     // public List<Game> findAll() {
-    // return gameRepository.findAll();
+    // return gam eRepository.findAll();
     // }
 }
